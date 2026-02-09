@@ -55,9 +55,9 @@ jobs:
       - name: Generate Screenshots
         run: npm run capture
 
-      # 6️⃣ Deploy screenshots to GitHub Pages
+      # 6️⃣ Deploy screenshots to GitHub Pages directly
       - name: Deploy Pages
         uses: actions/deploy-pages@v4
         with:
-          artifact_name: output   # folder with screenshots
-          auto_cancel: false      # ✅ prevent "cancel deployment failed"
+          artifact_name: output   # deploy local output folder
+          auto_cancel: false      # prevent cancel deployment errors
