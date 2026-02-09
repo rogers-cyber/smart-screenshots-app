@@ -1,12 +1,17 @@
-name: Generate PWA Screenshots
+name: Generate Screenshots and Deploy to Pages
 
 on:
   push:
     branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
-  screenshots:
+  screenshots-and-deploy:
     runs-on: ubuntu-24.04
 
     steps:
@@ -47,11 +52,16 @@ jobs:
       - name: Install Node dependencies
         run: npm install
 
-      - name: Run Smart Screenshots
+      - name: Generate Screenshots
         run: npm run capture
 
-      - name: Upload screenshots
+      - name: Upload Screenshots Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: screenshots
-          path: output/
+          name: screenshots-artifact
+          path: output
+
+      - name: Deploy Pages
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: screenshots-artifact
