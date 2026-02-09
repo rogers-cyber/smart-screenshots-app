@@ -1,0 +1,12 @@
+{
+  "name": "smart-screenshots-app",
+  "version": "1.0.0",
+  "description": "Smart screenshot generator for PWA store submissions",
+  "main": "run.js",
+  "scripts": {
+    "capture": "node run.js"
+  },
+  "dependencies": {
+    "puppeteer": "^22.0.0"
+  }
+}
