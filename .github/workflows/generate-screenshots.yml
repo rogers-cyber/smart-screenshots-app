@@ -7,7 +7,7 @@ on:
 
 jobs:
   screenshots:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout repository
@@ -50,7 +50,7 @@ jobs:
       - name: Run Smart Screenshots
         run: npm run capture
 
-      - name: Upload artifacts
+      - name: Upload screenshots
         uses: actions/upload-artifact@v4
         with:
           name: screenshots
