@@ -1,0 +1,22 @@
+{
+  "name": "Smart Screenshots App",
+  "short_name": "ScreenshotsApp",
+  "description": "Automatically generate Microsoft Store–ready screenshots for your PWA.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f5f5f5",
+  "theme_color": "#0f6cbd",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
