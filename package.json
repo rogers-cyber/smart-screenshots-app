@@ -1,10 +1,15 @@
 {
   "name": "smart-screenshots-app",
   "version": "1.0.0",
-  "description": "Smart screenshot generator for PWA store submissions",
+  "description": "Smart Screenshots App - automatically generate Microsoft Store–ready PWA screenshots",
   "main": "run.js",
   "scripts": {
     "capture": "node run.js"
+  },
+  "author": "rogers-cyber",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
   },
   "dependencies": {
     "puppeteer": "^22.0.0"
