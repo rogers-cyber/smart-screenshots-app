@@ -11,7 +11,7 @@ jobs:
 
     steps:
     # 1️⃣ Checkout repository
-    - name: Checkout repo
+    - name: Checkout repository
       uses: actions/checkout@v3
 
     # 2️⃣ Setup Node.js
@@ -28,9 +28,9 @@ jobs:
     - name: Run Smart Screenshots
       run: npm run capture
 
-    # 5️⃣ Upload screenshots as workflow artifact
-    - name: Upload screenshots
-      uses: actions/upload-artifact@v3
+    # 5️⃣ Upload screenshots as artifact
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
       with:
         name: screenshots
         path: output/
