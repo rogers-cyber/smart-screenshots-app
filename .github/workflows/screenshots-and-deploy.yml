@@ -1,0 +1,63 @@
+name: Generate Screenshots and Deploy to Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  screenshots-and-deploy:
+    runs-on: ubuntu-24.04
+
+    steps:
+      # 1️⃣ Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2️⃣ Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      # 3️⃣ Install Puppeteer dependencies
+      - name: Install Puppeteer dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            wget \
+            ca-certificates \
+            fonts-liberation \
+            libatk-bridge2.0-0 \
+            libatk1.0-0 \
+            libcups2 \
+            libdbus-1-3 \
+            libdrm2 \
+            libgbm1 \
+            libgtk-3-0 \
+            libnspr4 \
+            libnss3 \
+            libx11-xcb1 \
+            libxcomposite1 \
+            libxdamage1 \
+            libxrandr2 \
+            libxrender1 \
+            libxss1 \
+            libxtst6 \
+            lsb-release \
+            xdg-utils
+
+      # 4️⃣ Install Node dependencies
+      - name: Install Node dependencies
+        run: npm install
+
+      # 5️⃣ Run Smart Screenshots
+      - name: Generate Screenshots
+        run: npm run capture
+
+      # 6️⃣ Deploy screenshots to GitHub Pages
+      - name: Deploy Pages
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: output   # folder with screenshots
+          auto_cancel: false      # ✅ prevent "cancel deployment failed"
