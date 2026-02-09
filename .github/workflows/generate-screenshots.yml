@@ -1,0 +1,36 @@
+name: Generate PWA Screenshots
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1️⃣ Checkout repository
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    # 2️⃣ Setup Node.js
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    # 3️⃣ Install dependencies
+    - name: Install dependencies
+      run: npm install
+
+    # 4️⃣ Run screenshot script
+    - name: Run Smart Screenshots
+      run: npm run capture
+
+    # 5️⃣ Upload screenshots as workflow artifact
+    - name: Upload screenshots
+      uses: actions/upload-artifact@v3
+      with:
+        name: screenshots
+        path: output/
