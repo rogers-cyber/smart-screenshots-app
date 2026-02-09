@@ -1,18 +1,5 @@
-// Install event
-self.addEventListener("install", event => {
-  console.log("Service Worker installed");
-  self.skipWaiting();
-});
-
-// Activate event
-self.addEventListener("activate", event => {
-  console.log("Service Worker activated");
-  return self.clients.claim();
-});
-
-// Fetch event - serve files from cache if offline (simple caching)
-self.addEventListener("fetch", event => {
-  event.respondWith(
-    fetch(event.request).catch(() => caches.match(event.request))
-  );
+self.addEventListener("install", e => { self.skipWaiting(); });
+self.addEventListener("activate", e => self.clients.claim());
+self.addEventListener("fetch", e => {
+  e.respondWith(fetch(e.request).catch(()=>caches.match(e.request)));
 });

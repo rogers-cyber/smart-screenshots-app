@@ -1,18 +1,17 @@
 const puppeteer = require("puppeteer");
-const fs = require("fs");
 const path = require("path");
-
+const ensureDir = require("./utils/ensureDir");
 const config = require("./config");
+
+// Devices for screenshots
 const devices = [
   { name: "desktop", width: 1366, height: 768 },
   { name: "tablet", width: 1024, height: 768 },
   { name: "mobile", width: 375, height: 812 }
 ];
 
-// Ensure output directory exists
-if (!fs.existsSync(config.outputDir)) {
-  fs.mkdirSync(config.outputDir, { recursive: true });
-}
+// Ensure output folder exists
+ensureDir(config.outputDir);
 
 (async () => {
   console.log(`📸 ${config.appName} started`);

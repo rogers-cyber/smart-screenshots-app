@@ -4,71 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Smart Screenshots App</title>
-
-  <!-- PWA manifest -->
   <link rel="manifest" href="manifest.json">
-  
-  <!-- Theme colors for mobile browser UI -->
   <meta name="theme-color" content="#0f6cbd">
-  <meta name="description" content="Smart Screenshots App - generate Microsoft Store ready PWA screenshots">
-
-  <!-- Simple style for screenshots -->
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-      background: #f5f5f5;
-      color: #333;
-    }
-    header {
-      background: #0f6cbd;
-      color: white;
-      padding: 20px 0;
-      font-size: 2rem;
-    }
-    main {
-      padding: 40px 20px;
-    }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto 20px;
-    }
-    .app-box {
-      display: inline-block;
-      background: white;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
+    body { font-family: Arial; text-align:center; margin:0; padding:0; background:#f5f5f5; color:#333;}
+    header {background:#0f6cbd; color:white; padding:20px 0; font-size:2rem;}
+    main {padding:40px 20px;}
+    .app-box {display:inline-block; background:white; padding:30px; border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,0.15);}
   </style>
 </head>
 <body>
-  <header>
-    Smart Screenshots App
-  </header>
+  <header>Smart Screenshots App</header>
   <main>
     <div class="app-box">
       <h1>🚀 My PWA is Live!</h1>
-      <p>
-        This Progressive Web App is ready for Microsoft Store submission. 
-        Use the Smart Screenshots App to generate hero and mobile screenshots automatically.
-      </p>
+      <p>Use the Smart Screenshots App to generate Microsoft Store screenshots automatically.</p>
     </div>
   </main>
-
-  <!-- Register Service Worker -->
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js')
-        .then(() => console.log('Service Worker registered'))
-        .catch(err => console.error('Service Worker registration failed:', err));
+        .then(()=>console.log('Service Worker registered'))
+        .catch(err=>console.error('Service Worker failed:',err));
     }
   </script>
 </body>
