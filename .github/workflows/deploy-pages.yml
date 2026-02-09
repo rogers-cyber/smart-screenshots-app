@@ -1,0 +1,32 @@
+name: Deploy GitHub Pages with Screenshots
+
+on:
+  workflow_dispatch:
+  # Optionally deploy after screenshots workflow
+  workflow_run:
+    workflows: ["Generate PWA Screenshots"]
+    types:
+      - completed
+
+jobs:
+  deploy-pages:
+    runs-on: ubuntu-24.04
+
+    steps:
+      # 1️⃣ Checkout repo
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2️⃣ Download screenshots artifact from previous workflow run
+      - name: Download screenshots artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: screenshots
+          path: output
+
+      # 3️⃣ Deploy to GitHub Pages
+      - name: Deploy Pages
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: screenshots   # artifact folder to deploy
+          auto_cancel: false           # disable auto-cancel to avoid errors
