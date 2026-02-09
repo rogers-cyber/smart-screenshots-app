@@ -1,5 +1,0 @@
-# Node.js version
-node>=18
-
-# NPM dependencies
-puppeteer>=22.0.0
